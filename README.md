@@ -1,2 +1,5 @@
 # Tarea1DOO
-Repositorio para la tarea 1 de Desarrollo Orientado a Objeto
+Integrantes:
+Esteban Andrés Astete Cifuentes
+Benjamín Alexander Belmar Araus
+Joel Tomás Andrés Rojas Seals
