@@ -1,3 +1,6 @@
+# Evitar compartir archivos innecesarios
+*.idea/
+
 # Compiled class file
 *.class
 
