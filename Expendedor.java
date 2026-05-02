@@ -29,7 +29,6 @@ public class Expendedor {
             cont+=5;
         }
 
-
     }
     public Producto comprarProducto(Moneda m, int cual) throws Exception{
         switch(cual) {
@@ -52,12 +51,11 @@ public class Expendedor {
                 monVu.add(m);  // deposito no existe
                 return null;
         }
-
-
+        
         if(m == null){
             throw new PagoIncorrectoException();
         }
-        if(m.getValor() < precioProductos){ //en este if tiene que ir PagoInsuficienteException
+        if(m.getValor() < precioProductos){
             monVu.add(m);
             throw new PagoInsuficienteException();
         }
@@ -81,7 +79,7 @@ public class Expendedor {
                 break;
         }
 
-        if(p == null){ //en este if tiene que ir NoHayProductoException
+        if(p == null){
             monVu.add(m);
             throw new NoHayProductoException();
         }
