@@ -31,7 +31,7 @@ public class Expendedor {
 
 
     }
-    public Producto comprarProducto(Moneda m, int cual){
+    public Producto comprarProducto(Moneda m, int cual) throws Exception{
         switch(cual) {
             case COCA:
                 this.precioProductos = Precio.COCA.getValor();
@@ -54,12 +54,13 @@ public class Expendedor {
         }
 
 
-        if(m == null) return null; // en este if tiene que ir PagoIncorrectoException
+        if(m == null){
+            throw new PagoIncorrectoException();
+        }
         if(m.getValor() < precioProductos){ //en este if tiene que ir PagoInsuficienteException
             monVu.add(m);
-            return null;
+            throw new PagoInsuficienteException();
         }
-
 
         Producto p = null;
         switch(cual) {
@@ -82,7 +83,7 @@ public class Expendedor {
 
         if(p == null){ //en este if tiene que ir NoHayProductoException
             monVu.add(m);
-            return null;
+            throw new NoHayProductoException();
         }
 
         int diff = m.getValor() - precioProductos; //con esto se crea el vuelto y se almacena en monedas de 100
