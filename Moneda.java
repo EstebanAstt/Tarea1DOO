@@ -6,10 +6,6 @@ abstract class Moneda{
         return this;
     }
     public abstract int getValor();
-
-    public String toString() {
-        return "Valor de moneda:" + getValor() + "Número de serie:" + getSerie();
-    }
 }
 
 interface Comparable<Moneda> {
@@ -25,6 +21,10 @@ class Moneda1500 extends Moneda {
     public int getValor(){
         return 1500;
     }
+
+    public String toString(){
+        return getValor() + " " + getSerie().hashCode();
+    }
 }
 
 class Moneda1000 extends Moneda {
@@ -35,6 +35,10 @@ class Moneda1000 extends Moneda {
     @Override
     public int getValor(){
         return 1000;
+    }
+
+    public String toString(){
+        return getValor() + " " + getSerie().hashCode();
     }
 }
 
@@ -47,6 +51,10 @@ class Moneda500 extends Moneda {
     public int getValor(){
         return 500;
     }
+
+    public String toString(){
+        return getValor() + " " + getSerie().hashCode();
+    }
 }
 
 class Moneda100 extends Moneda {
@@ -57,5 +65,9 @@ class Moneda100 extends Moneda {
     @Override
     public int getValor(){
         return 100;
+    }
+
+    public String toString(){
+        return getValor() + " " + getSerie().hashCode();
     }
 }
