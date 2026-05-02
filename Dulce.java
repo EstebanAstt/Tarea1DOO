@@ -17,9 +17,6 @@ class Super8 extends Dulce{
         return "Super8";
     }
 
-    public int getPrecio(){
-        return 100;
-    }
 
 }
 
@@ -29,11 +26,7 @@ class Snickers extends Dulce{
     }
     @Override
     public String comer(){
-        return "Super8";
-    }
-
-    public int getPrecio(){
-        return 100;
+        return "Snickers";
     }
 
 }

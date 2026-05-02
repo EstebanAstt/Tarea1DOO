@@ -5,5 +5,4 @@ public abstract class Producto{
     public Producto(int serie){
         this.serie = serie;
     }
-    public abstract int getPrecio();
 }

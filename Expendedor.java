@@ -15,42 +15,54 @@ public class Expendedor {
     public static final int  SUPER8=4;
     public static final int  SNICKERS=5;
 
-    public Expendedor(int numProductos, int precioProductos){
+    public Expendedor(int numProductos){
         this.numProductos = numProductos;
-        this.precioProductos = precioProductos;
 
 
-        int cont = 0;
+        int cont = 1;
         for(int i = 0; i < this.numProductos; i++){
             cocacola.add(new CocaCola(cont));
-            cont++;
+            sprite.add(new Sprite(cont+1));
+            fanta.add(new Fanta(cont+2));
+            super8.add(new Super8(cont+3));
+            snickers.add(new Snickers(cont+4));
+            cont+=5;
         }
-        for(int i = 0; i < this.numProductos; i++){
-            sprite.add(new Sprite(cont));
-            cont++;
-        }
-        for(int i = 0; i < this.numProductos; i++){
-            fanta.add(new Fanta(cont));
-            cont++;
-        }
-        for(int i = 0; i < this.numProductos; i++){
-            super8.add(new Super8(cont));
-            cont++;
-        }
-        for(int i = 0; i < this.numProductos; i++){
-            snickers.add(new Snickers(cont));
-            cont++;
-        }
+
 
     }
     public Producto comprarProducto(Moneda m, int cual){
+        switch(cual) {
+            case COCA:
+                this.precioProductos = Precio.COCA.getValor();
+                break;
+            case SPRITE:
+                this.precioProductos = Precio.SPRITE.getValor();
+                break;
+            case FANTA:
+                this.precioProductos = Precio.FANTA.getValor();
+                break;
+            case SUPER8:
+                this.precioProductos = Precio.SUPER8.getValor();
+                break;
+            case SNICKERS:
+                this.precioProductos = Precio.SNICKERS.getValor();
+                break;
+            default:
+                monVu.add(m);  // deposito no existe
+                return null;
+        }
+
+
         if(m == null) return null; // en este if tiene que ir PagoIncorrectoException
         if(m.getValor() < precioProductos){ //en este if tiene que ir PagoInsuficienteException
             monVu.add(m);
             return null;
         }
+
+
         Producto p = null;
-        switch (cual) {
+        switch(cual) {
             case COCA:
                 p = cocacola.get();
                 break;
@@ -66,16 +78,12 @@ public class Expendedor {
             case SNICKERS:
                 p = snickers.get();
                 break;
-            default:
-                monVu.add(m);  // deposito no existe
-                return null;
         }
 
         if(p == null){ //en este if tiene que ir NoHayProductoException
             monVu.add(m);
             return null;
         }
-        //xd
 
         int diff = m.getValor() - precioProductos; //con esto se crea el vuelto y se almacena en monedas de 100
         for(int i = 0; i < diff; i+=100){
@@ -88,5 +96,4 @@ public class Expendedor {
     public Moneda getVuelto() {
         return monVu.get();
     }
-
 }

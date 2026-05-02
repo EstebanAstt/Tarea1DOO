@@ -21,9 +21,6 @@ class CocaCola extends Bebida {
     public String beber() {
         return "cocacola";
     }
-    public int getPrecio(){
-        return 100;
-    }
 }
 
 class Sprite extends Bebida {
@@ -35,9 +32,6 @@ class Sprite extends Bebida {
     public String beber() {
         return "sprite";
     }
-    public int getPrecio(){
-        return 100;
-    }
 }
 
 class Fanta extends Bebida {
@@ -48,8 +42,5 @@ class Fanta extends Bebida {
     @Override
     public String beber() {
         return "fanta";
-    }
-    public int getPrecio(){
-        return 100;
     }
 }
