@@ -1,4 +1,4 @@
-abstract class Moneda {
+abstract class Moneda{
     public Moneda(){
     }
 
@@ -10,6 +10,10 @@ abstract class Moneda {
     public String toString() {
         return "Valor de moneda:" + getValor() + "Número de serie:" + getSerie();
     }
+}
+
+interface Comparable<Moneda> {
+    abstract int compareTo(Moneda m);
 }
 
 class Moneda1500 extends Moneda {
