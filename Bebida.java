@@ -1,3 +1,8 @@
+/**
+ * la clase {@link Bebida} es subclase de producto y a su vez es la clase padre de Cocacola, Fanta y Sprite respectivamente
+ * Para hacer que clase Dulce y Bebida tuvieran otras diferencias ademas de del nombre fue poner dos metodos distintos,
+ * en bebida es String beber y en Dulce es String comer
+ */
 public abstract class Bebida extends Producto{
     private int serie;
 
