@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class Deposito<T> { //deposito<T> sirve para crear un deposito generico
+public class Deposito<T> { //deposito<T> sirve para crear un deposito generico
     private ArrayList<T> dep;
 
     public Deposito() {
