@@ -24,8 +24,9 @@ public class Expendedor {
     private Deposito<Moneda> monVu = new Deposito<>();
 
     /**
-     * todos estos static int sirven para facilitar la comprension conceptual a la hora
-     * de recibir cual producto recibe {@link #comprarProducto(Moneda, int)} <- solo puede recibir moneda y entero
+     * todos estos static int sirven para facilitar la comprension conceptual, como
+     * {@link #comprarProducto(Moneda, int)} solo puede recibir moneda y entero definimos
+     * que cada numero representa un producto
      */
     public static final int  COCA=1;
     public static final int  SPRITE=2;
@@ -38,7 +39,7 @@ public class Expendedor {
 
         /**
          * @param cont sirve para dar un N° de serie unico para cada producto en el for,
-         * el cual crea la cantidad definida en su creacion
+         * el cual crea productos segun la cantidad definida al inicializar el expendedor
          */
         int cont = 1;
         for(int i = 0; i < this.numProductos; i++){
@@ -51,14 +52,14 @@ public class Expendedor {
         }
 
     }
-    public Producto comprarProducto(Moneda m, int cual) throws Exception{
+    public Producto comprarProducto(Moneda m, int cual) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
         /**
          * aqui una aclaracion importante y es porque se hace uso de dos switch, porque en principio
-         * es innecesario pero es porque en un switch se define el precio del producto y en el otro
+         * es innecesario, pero es porque en un switch se define el precio del producto y en el otro
          * se crea el producto, no se hacen ambas cosas juntas porque se tendria que extraer el producto
-         * de su deposito sin verificar aun si al comprador le alcanza, y en caso de que no le alcanze,
+         * de su deposito para poder verificar si al comprador le alcanza, y en caso de que no le alcanze,
          * como el producto ya se saco del deposito desapareceria, lo cual no tiene sentido, se podria
-         * vaciar un deposito sin haber comprado un producto
+         * vaciar un deposito sin haber comprado un solo producto
          */
         switch(cual) {
             case COCA:
