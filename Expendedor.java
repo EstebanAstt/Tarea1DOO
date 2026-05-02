@@ -1,6 +1,6 @@
 public class Expendedor {
     private int numProductos;
-    private int precioBebidas;
+    private int precioProductos;
 
     private Deposito<CocaCola> cocacola = new Deposito<>();
     private Deposito<Sprite> sprite = new Deposito<>();
@@ -15,9 +15,9 @@ public class Expendedor {
     public static final int  SUPER8=4;
     public static final int  SNICKERS=5;
 
-    public Expendedor(int numProductos, int precioBebidas){
+    public Expendedor(int numProductos, int precioProductos){
         this.numProductos = numProductos;
-        this.precioBebidas = precioBebidas;
+        this.precioProductos = precioProductos;
 
 
         int cont = 0;
@@ -37,11 +37,15 @@ public class Expendedor {
             super8.add(new Super8(cont));
             cont++;
         }
+        for(int i = 0; i < this.numProductos; i++){
+            snickers.add(new Snickers(cont));
+            cont++;
+        }
 
     }
-    public Bebida comprarBebida(Moneda m, int cual){
-        if(m == null) return null;
-        if(m.getValor() < precioBebidas){
+    public Producto comprarProducto(Moneda m, int cual){
+        if(m == null) return null; // en este if tiene que ir PagoIncorrectoException
+        if(m.getValor() < precioProductos){ //en este if tiene que ir PagoInsuficienteException
             monVu.add(m);
             return null;
         }
@@ -67,17 +71,17 @@ public class Expendedor {
                 return null;
         }
 
-        if(b == null){
+        if(p == null){ //en este if tiene que ir NoHayProductoException
             monVu.add(m);
             return null;
         }
         //xd
 
-        int diff = m.getValor() - precioBebidas; //con esto se crea el vuelto y se almacena en monedas de 100
+        int diff = m.getValor() - precioProductos; //con esto se crea el vuelto y se almacena en monedas de 100
         for(int i = 0; i < diff; i+=100){
             monVu.add(new Moneda100());
         }
-        return b;
+        return p;
 
     }
 
