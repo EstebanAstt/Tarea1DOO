@@ -6,6 +6,10 @@ abstract class Moneda {
         return this;
     }
     public abstract int getValor();
+
+    public String toString() {
+        return "Valor de moneda:" + getValor() + "Número de serie:" + getSerie();
+    }
 }
 
 class Moneda1500 extends Moneda {
