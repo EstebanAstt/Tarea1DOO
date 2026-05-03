@@ -1,6 +1,13 @@
 import java.util.Scanner;
 
+/** Clase interactiva en donde el usuario puede comprar productos con monedas ingresadas */
 public class MainInteractivo {
+
+    /**
+     * @throws NoHayProductoException
+     * @throws PagoIncorrectoException
+     * @throws PagoInsuficienteException
+     */
     public static void main() throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         Expendedor expendedorValido = new Expendedor(2);
         Scanner usuarioScan = new Scanner(System.in);
