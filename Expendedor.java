@@ -78,9 +78,12 @@ public class Expendedor {
                 this.precioProductos = Precio.SNICKERS.getValor();
                 break;
             default:
-                monVu.add(m);  // deposito no existe
+                monVu.add(m);
                 return null;
         }
+
+        // repeticiones para el ciclo for
+        int repeticiones;
         
         if(m == null){
             /**
@@ -93,9 +96,11 @@ public class Expendedor {
              * @throws PagoInsuficienteException se lanza si el dinero no alcanza para comprar el producto solicitado
              */
             monVu.add(m);
+            repeticiones = m.getValor() / 100;
             throw new PagoInsuficienteException();
         }
 
+        repeticiones = (m.getValor() - precioProductos) / 100;
         Producto p = null;
         switch(cual) {
             case COCA:
@@ -120,21 +125,21 @@ public class Expendedor {
              * @throws NoHayProductoException se lanza si no queda producto (el deposito p entrego null)
              */
             monVu.add(m);
+            repeticiones = m.getValor() / 100;
             throw new NoHayProductoException();
         }
         /**
-         * @param diff es el vuelto, el cual no se retorna (porque lo unico que se retorna es el producto p)
-         * si no que se almacena en un deposito el cual se rellena con monedas de 100 hasta completar el vuelto
+         * @param repeticiones son la cantidad de monedas de vuelto,
+         * la cual no se retorna (porque lo único que se retorna es el producto p)
          */
-        int diff = m.getValor() - precioProductos; //con esto se crea el vuelto y se almacena en monedas de 100
-        for(int i = 0; i < diff; i+=100){
-            monVu.add(new Moneda100());
+        for(int i = 0; i < repeticiones; i++){
+            Moneda monedaLocal = new Moneda100();
+            monVu.add(monedaLocal);
         }
         return p;
     }
 
     /**
-     *
      * @return se retorna las monedas de 100 de una en una, el comprador debe tener
      * un metodo para obtener su vuelto completo
      */
