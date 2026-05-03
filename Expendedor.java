@@ -126,7 +126,7 @@ public class Expendedor {
          * @param diff es el vuelto, el cual no se retorna (porque lo unico que se retorna es el producto p)
          * si no que se almacena en un deposito el cual se rellena con monedas de 100 hasta completar el vuelto
          */
-        int diff = (m.getValor() - precioProductos) - 100; //con esto se crea el vuelto y se almacena en monedas de 100
+        int diff = m.getValor() - precioProductos; //con esto se crea el vuelto y se almacena en monedas de 100
         for(int i = 0; i < diff; i+=100){
             monVu.add(new Moneda100());
         }
