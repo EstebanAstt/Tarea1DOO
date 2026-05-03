@@ -53,6 +53,7 @@ public class Expendedor {
 
     }
     public Producto comprarProducto(Moneda m, int cual) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
+        while(monVu.get() != null);
         /**
          * aqui una aclaracion importante y es porque se hace uso de dos switch, porque en principio
          * es innecesario, pero es porque en un switch se define el precio del producto y en el otro

@@ -8,7 +8,7 @@ public class MainInteractivo {
      * @throws PagoIncorrectoException
      * @throws PagoInsuficienteException
      */
-    public static void main() throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
+    public static void main(String[] args) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         Expendedor expendedorValido = new Expendedor(2);
         Scanner usuarioScan = new Scanner(System.in);
 
@@ -47,7 +47,10 @@ public class MainInteractivo {
             }
 
             try {
-                expendedorValido.comprarProducto(monedaInput, tipoProducto);
+                Comprador compradorInput = new Comprador(monedaInput, tipoProducto, expendedorValido);
+                System.out.println("Moneda Ingresada: " + monedaInput);
+                System.out.println("Compraste " + compradorInput.queConsumiste() + " y tienes " + compradorInput.cuantoVuelto() + " pesos de vuelto");
+
             } catch (PagoIncorrectoException e) {
                 System.out.println("Error: No se ingresó ninguna moneda"); break;
             } catch (PagoInsuficienteException e) {
@@ -56,9 +59,6 @@ public class MainInteractivo {
                 System.out.println("Error: No hay productos disponibles en el deposito"); break;
             }
 
-            Comprador compradorInput = new Comprador(monedaInput, tipoProducto, expendedorValido);
-            System.out.println("Moneda Ingresada: " + monedaInput);
-            System.out.println("Compraste " + compradorInput.queConsumiste() + " y tienes " + compradorInput.cuantoVuelto() + " pesos de vuelto");
 
             System.out.print("\n");
             System.out.println("#######################################");

@@ -11,7 +11,7 @@ public class Main {
 	 * @throws PagoIncorrectoException
 	 * @throws PagoInsuficienteException
 	 */
-	public static void main() throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
+	public static void main(String[] args) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
 		Expendedor expendedorValido = new Expendedor(3);
 		Expendedor expendedorNulo = new Expendedor(0);
 
